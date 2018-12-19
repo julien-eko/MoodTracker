@@ -16,12 +16,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-public class PageFragment extends Fragment {
+public  class PageFragment extends Fragment implements View.OnClickListener {
 
     // 1 - Create keys for our Bundle
     private static final String KEY_POSITION="position";
     private static final String KEY_COLOR="color";
+    //2 - Declare callback
+    private OnButtonClickedListener mCallback;
 
+    // 1 - Declare our interface that will be implemented by any container activity
+    public interface OnButtonClickedListener {
+        public void onButtonClicked(View view);
+    }
 
     public PageFragment() { }
 
@@ -48,6 +54,7 @@ public class PageFragment extends Fragment {
         // 3 - Get layout of PageFragment
         View result = inflater.inflate(R.layout.fragment_page, container, false);
 
+        result.findViewById(R.id.history).setOnClickListener(this);
 
         // 4 - Get widgets from layout and serialise it
         RelativeLayout rootView= (RelativeLayout) result.findViewById(R.id.fragment_page_rootview);
@@ -85,5 +92,25 @@ public class PageFragment extends Fragment {
 
         return result;
     }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
 
+        // 4 - Call the method that creating callback after being attached to parent activity
+        this.createCallbackToParentActivity();
+    }
+    @Override
+    public void onClick(View v) {
+        // 5 - Spread the click to the parent activity
+        mCallback.onButtonClicked(v);
+    }
+    // 3 - Create callback to parent activity
+    private void createCallbackToParentActivity(){
+        try {
+            //Parent activity will automatically subscribe to callback
+            mCallback = (OnButtonClickedListener) getActivity();
+        } catch (ClassCastException e) {
+            throw new ClassCastException(e.toString()+ " must implement OnButtonClickedListener");
+        }
+    }
 }
