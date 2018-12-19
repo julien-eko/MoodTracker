@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -23,6 +24,8 @@ public  class PageFragment extends Fragment implements View.OnClickListener {
     private static final String KEY_COLOR="color";
     //2 - Declare callback
     private OnButtonClickedListener mCallback;
+    private Button mHistory;
+    private Button mAddComment;
 
     // 1 - Declare our interface that will be implemented by any container activity
     public interface OnButtonClickedListener {
@@ -53,8 +56,14 @@ public  class PageFragment extends Fragment implements View.OnClickListener {
 
         // 3 - Get layout of PageFragment
         View result = inflater.inflate(R.layout.fragment_page, container, false);
+        mAddComment= (Button) result.findViewById(R.id.addComment);
+        mHistory = (Button) result.findViewById(R.id.history);
+        mAddComment.setOnClickListener(this);
+        mHistory.setOnClickListener(this);
+        mAddComment.setTag(0);
+        mHistory.setTag(1);
+        //result.findViewById(R.id.history).setOnClickListener(this);
 
-        result.findViewById(R.id.history).setOnClickListener(this);
 
         // 4 - Get widgets from layout and serialise it
         RelativeLayout rootView= (RelativeLayout) result.findViewById(R.id.fragment_page_rootview);

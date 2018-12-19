@@ -6,8 +6,13 @@ public class User {
 
     private ArrayList<String> moodComment;
     private ArrayList<Integer> moodDay;
+    private static User instance = new User();
 
-    public User(){
+    public static User getInstance(){
+        return instance;
+    }
+    private User(){
+
         moodComment = new ArrayList();
         moodDay = new ArrayList();
 

@@ -34,7 +34,14 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
     @Override
     public void onButtonClicked(View view) {
         //Log.e(getClass().getSimpleName(),"Button clicked !");
-        startActivity(new Intent(this,History.class));
+        int responseIndex = (int) view.getTag();
+        if (responseIndex == 1) {
+            startActivity(new Intent(this, History.class));
+        }
+        if (responseIndex == 0){
+            
+
+        }
     }
 
 }
