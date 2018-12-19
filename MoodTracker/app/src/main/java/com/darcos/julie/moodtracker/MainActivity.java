@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         // 1 - Get ViewPager from layout
 
         VerticalViewPager pager = (VerticalViewPager) findViewById(R.id.activity_main_viewpager);
-        
+
         // 2 - Set Adapter PageAdapter and glue it together
         pager.setAdapter(new PageAdapter(getSupportFragmentManager(), getResources().getIntArray(R.array.colorPagesViewPager)) {
         });
