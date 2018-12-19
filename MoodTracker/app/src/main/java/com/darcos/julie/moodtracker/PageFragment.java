@@ -27,6 +27,8 @@ public  class PageFragment extends Fragment implements View.OnClickListener {
     private Button mHistory;
     private Button mAddComment;
 
+
+
     // 1 - Declare our interface that will be implemented by any container activity
     public interface OnButtonClickedListener {
         public void onButtonClicked(View view);

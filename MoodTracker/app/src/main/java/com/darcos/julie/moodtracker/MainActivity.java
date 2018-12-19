@@ -15,7 +15,6 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity implements PageFragment.OnButtonClickedListener {
     private Button mHistory;
     private Button mComment;
-    private String m_Text ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
             builder.setPositiveButton("VALIDER", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    m_Text = input.getText().toString();
+                    User.getInstance().setDayComment(input.getText().toString());
                 }
             });
             builder.setNegativeButton("ANNULER", new DialogInterface.OnClickListener() {

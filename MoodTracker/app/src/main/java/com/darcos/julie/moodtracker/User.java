@@ -5,8 +5,12 @@ import java.util.ArrayList;
 public class User {
 
     private ArrayList<String> moodComment;
-    private ArrayList<Integer> moodDay;
+    private ArrayList<String> mood;
     private static User instance = new User();
+    private String dayComment="";
+    private String dayMood="";
+
+
 
     public static User getInstance(){
         return instance;
@@ -14,23 +18,22 @@ public class User {
     private User(){
 
         moodComment = new ArrayList();
-        moodDay = new ArrayList();
+        mood = new ArrayList();
 
     }
-
-    public ArrayList<String> getMoodComment() {
-        return moodComment;
+    public String getDayComment() {
+        return dayComment;
     }
 
-    public void addMoodComment(String Comment) {
-        this.moodComment.add(Comment);
+    public void setDayComment(String dayComment) {
+        this.dayComment = dayComment;
     }
 
-    public ArrayList<Integer> getMoodDay() {
-        return moodDay;
+    public String getDayMood() {
+        return dayMood;
     }
 
-    public void addMoodDay(Integer moodDay) {
-        this.moodDay.add(moodDay);
+    public void setDayMood(String dayMood) {
+        this.dayMood = dayMood;
     }
 }
