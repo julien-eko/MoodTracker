@@ -2,10 +2,12 @@ package com.darcos.julie.moodtracker;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public  class PageFragment extends Fragment implements View.OnClickListener {
@@ -24,8 +27,10 @@ public  class PageFragment extends Fragment implements View.OnClickListener {
     private static final String KEY_COLOR="color";
     //2 - Declare callback
     private OnButtonClickedListener mCallback;
+    private ViewPager.OnPageChangeListener mPageCHange;
     private Button mHistory;
     private Button mAddComment;
+    private int numPage;
 
 
 
@@ -67,6 +72,9 @@ public  class PageFragment extends Fragment implements View.OnClickListener {
         //result.findViewById(R.id.history).setOnClickListener(this);
 
 
+
+
+
         // 4 - Get widgets from layout and serialise it
         RelativeLayout rootView= (RelativeLayout) result.findViewById(R.id.fragment_page_rootview);
         ImageView img = (ImageView) result.findViewById(R.id.imageView);
@@ -83,6 +91,7 @@ public  class PageFragment extends Fragment implements View.OnClickListener {
         {
             case 0:
                 img.setImageDrawable(getResources().getDrawable(R.drawable.smiley_super_happy));
+
                 break;
             case 1:
                 img.setImageDrawable(getResources().getDrawable(R.drawable.smiley_happy));
@@ -99,10 +108,20 @@ public  class PageFragment extends Fragment implements View.OnClickListener {
             default:
 
         }
-        Log.e(getClass().getSimpleName(), "onCreateView called for fragment number "+position);
+
+
+        //Log.e(getClass().getSimpleName(), "onCreateView called for fragment number "+position);
+
+
+
+
+
+
 
         return result;
     }
+
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -115,6 +134,8 @@ public  class PageFragment extends Fragment implements View.OnClickListener {
         // 5 - Spread the click to the parent activity
         mCallback.onButtonClicked(v);
     }
+
+
     // 3 - Create callback to parent activity
     private void createCallbackToParentActivity(){
         try {
@@ -123,5 +144,9 @@ public  class PageFragment extends Fragment implements View.OnClickListener {
         } catch (ClassCastException e) {
             throw new ClassCastException(e.toString()+ " must implement OnButtonClickedListener");
         }
+        
+
     }
+
+
 }

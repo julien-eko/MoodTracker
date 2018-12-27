@@ -1,5 +1,6 @@
 package com.darcos.julie.moodtracker;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -65,11 +66,17 @@ public class User {
         return new Date(y,m,d+1);
     }
 
-    public String getDate() {
+    public String dateToString() {
         Date d = new Date();
-        SimpleDateFormat f = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
+        SimpleDateFormat f = new SimpleDateFormat("yyyyMMdd");
         String s = f.format(d);
         return s;
+    }
+
+    public Date StringToDate(String date) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        Date d = sdf.parse(date);
+        return d;
     }
 
     public Date getDate1() {

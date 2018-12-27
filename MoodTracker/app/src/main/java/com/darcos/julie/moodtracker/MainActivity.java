@@ -1,7 +1,9 @@
 package com.darcos.julie.moodtracker;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -11,10 +13,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements PageFragment.OnButtonClickedListener {
+
     private Button mHistory;
     private Button mComment;
+    private  String t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,15 +28,23 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
         setContentView(R.layout.activity_main);
 
 
+
         //3 - Configure ViewPager
 
         this.configureViewPager();
+
+        //Toast.makeText(this, "test!",
+          //      Toast.LENGTH_LONG).show();
+
     }
+
+
+
     private void configureViewPager() {
         // 1 - Get ViewPager from layout
 
         VerticalViewPager pager = (VerticalViewPager) findViewById(R.id.activity_main_viewpager);
-
+        pager.addOnPageChangeListener(listener);
         // 2 - Set Adapter PageAdapter and glue it together
         pager.setAdapter(new PageAdapter(getSupportFragmentManager(), getResources().getIntArray(R.array.colorPagesViewPager)) {
         });
@@ -56,7 +70,11 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
             builder.setPositiveButton("VALIDER", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    User.getInstance().setDayComment(input.getText().toString());
+                    SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("Comment"+User.getInstance().dateToString(), input.getText().toString());
+                    editor.apply();
+                    //User.getInstance().setDayComment(input.getText().toString());
                 }
             });
             builder.setNegativeButton("ANNULER", new DialogInterface.OnClickListener() {
@@ -70,5 +88,51 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
 
         }
     }
+    private ViewPager.OnPageChangeListener listener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            switch (position) {
+                case 0:
+                    User.getInstance().setDayMood("superHappy");
+                    break;
+                case 1:
+                    User.getInstance().setDayMood("happy");
+                    break;
+                case 2:
+                    User.getInstance().setDayMood("normal");
+                    break;
+                case 3:
+                    User.getInstance().setDayMood("disappointed");
+                    break;
+                case 4:
+                    User.getInstance().setDayMood("sad");
+                    break;
+                default:
+
+            }
+                    SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("Mood"+User.getInstance().dateToString(), User.getInstance().getDayMood());
+                    editor.apply();
+
+                    //String dayMood = getPreferences(MODE_PRIVATE).getString("Comment20181227", null);
+                    //Toast.makeText(MainActivity.this, dayMood, Toast.LENGTH_SHORT).show();
+
+
+
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+    };
+
+
 
 }

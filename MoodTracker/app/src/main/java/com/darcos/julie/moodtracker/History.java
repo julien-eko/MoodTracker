@@ -10,8 +10,6 @@ public class History extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
-        TextView test = (TextView) findViewById(R.id.test) ;
-        test.setText((CharSequence) User.getInstance().getDate());
 
     }
 }

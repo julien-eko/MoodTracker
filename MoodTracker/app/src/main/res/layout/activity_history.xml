@@ -4,11 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".History">
+    tools:context=".History"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/mood1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/test"/>
+        android:textColor="@color/banana_yellow"
+        android:text="mood1"/>
+
+    <Button
+        android:id="@+id/mood2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/faded_red"
+        android:text="mood2"/>
+
+    <Button
+        android:id="@+id/mood3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/faded_red"
+        android:text="mood3"/>
+
+    <Button
+        android:id="@+id/mood4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:text="mood4"/>
+    <Button
+        android:id="@+id/mood5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:text="mood5"/>
+    <Button
+        android:id="@+id/mood6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:text="mood6"/>
+    <Button
+        android:id="@+id/mood7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:text="mood7"/>
+
 
 </LinearLayout>
