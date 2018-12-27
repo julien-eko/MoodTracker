@@ -7,51 +7,148 @@
     tools:context=".History"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/mood1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/banana_yellow"
-        android:text="mood1"/>
 
-    <Button
-        android:id="@+id/mood2"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/faded_red"
-        android:text="mood2"/>
+        android:layout_weight="1"
+        android:background="@color/faded_red"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/mood3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/faded_red"
-        android:text="mood3"/>
+        <Button
+            android:id="@+id/Comment1"
+            android:layout_width="@dimen/size_button_width"
+            android:layout_height="@dimen/size_button_height"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_comment_black_48px"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Il y a une semaine"/>
 
-    <Button
-        android:id="@+id/mood4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorAccent"
-        android:text="mood4"/>
-    <Button
-        android:id="@+id/mood5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorAccent"
-        android:text="mood5"/>
-    <Button
-        android:id="@+id/mood6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorAccent"
-        android:text="mood6"/>
-    <Button
-        android:id="@+id/mood7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorAccent"
-        android:text="mood7"/>
+    </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="@color/banana_yellow">
+        <Button
+            android:id="@+id/Comment2"
+            android:layout_width="@dimen/size_button_width"
+            android:layout_height="@dimen/size_button_height"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_comment_black_48px"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Il y a six Jours"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+    android:background="@color/black_overlay">
+        <Button
+            android:id="@+id/Comment3"
+            android:layout_width="@dimen/size_button_width"
+            android:layout_height="@dimen/size_button_height"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_comment_black_48px"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:id="@+id/text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Il y a cinq Jours"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/faded_red"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/Comment4"
+            android:layout_width="@dimen/size_button_width"
+            android:layout_height="@dimen/size_button_height"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_comment_black_48px"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:id="@+id/text4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Il y a quatre Jours"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="@color/banana_yellow">
+        <Button
+            android:id="@+id/Comment5"
+            android:layout_width="@dimen/size_button_width"
+            android:layout_height="@dimen/size_button_height"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_comment_black_48px"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:id="@+id/text5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Il y a trois Jours"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/faded_red"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/Comment6"
+            android:layout_width="@dimen/size_button_width"
+            android:layout_height="@dimen/size_button_height"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_comment_black_48px"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:id="@+id/text6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Avant-hier"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="@color/black_overlay">
+        <Button
+            android:id="@+id/Comment7"
+            android:layout_width="@dimen/size_button_width"
+            android:layout_height="@dimen/size_button_height"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_comment_black_48px"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:id="@+id/text7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hier"/>
+    </RelativeLayout>
 
 </LinearLayout>
