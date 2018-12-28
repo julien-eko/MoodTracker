@@ -16,11 +16,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity implements PageFragment.OnButtonClickedListener {
 
     private Button mHistory;
     private Button mComment;
     private  String t;
+    private static ArrayList<String> tabDayMood ;
+    private static ArrayList<String> tabComment ;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
         //Log.e(getClass().getSimpleName(),"Button clicked !");
         int responseIndex = (int) view.getTag();
         if (responseIndex == 1) {
+            tabDayMood =sevenLastMood();
+            tabComment=sevenLastComment();
             startActivity(new Intent(this, History.class));
         }
         if (responseIndex == 0){
@@ -72,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
                 public void onClick(DialogInterface dialog, int which) {
                     SharedPreferences preferences = getPreferences(MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("Comment"+User.getInstance().dateToString(), input.getText().toString());
+                    editor.putString("Comment"+User.getInstance().dateToString(new Date()), input.getText().toString());
                     editor.apply();
                     //User.getInstance().setDayComment(input.getText().toString());
                 }
@@ -117,13 +126,13 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
             }
                     SharedPreferences preferences = getPreferences(MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("Mood"+User.getInstance().dateToString(), User.getInstance().getDayMood());
+                    editor.putString("Mood"+User.getInstance().dateToString(new Date()), User.getInstance().getDayMood());
                     editor.apply();
 
                     //String dayMood = getPreferences(MODE_PRIVATE).getString("Comment20181227", null);
                     //Toast.makeText(MainActivity.this, dayMood, Toast.LENGTH_SHORT).show();
-
-
+            //tabDayMood =sevenLastMood1();
+            //Toast.makeText(MainActivity.this, test.get(0), Toast.LENGTH_SHORT).show();
 
         }
 
@@ -133,6 +142,49 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
         }
     };
 
+    public ArrayList<String> sevenLastMood()  {
+        String mood ;
+        ArrayList<String> list =new ArrayList<String>();
+
+        Date d=new Date() ;
+        String s ;
+        while(list.size()<8 ){
+            s =User.getInstance().dateToString(d);
+            mood=getPreferences(MODE_PRIVATE).getString("Mood"+s,null);
+            list.add(mood);
+            d=User.getInstance().stringToDate(s);
+            d=User.getInstance().removeOneDay(d);
+
+        }
 
 
+        return list;
+    }
+
+    public ArrayList<String> sevenLastComment()  {
+        String comment ;
+        ArrayList<String> list =new ArrayList<String>();
+
+        Date d=new Date() ;
+        String s ;
+        while(list.size()<8 ){
+            s =User.getInstance().dateToString(d);
+            comment=getPreferences(MODE_PRIVATE).getString("Comment"+s,null);
+            list.add(comment);
+            d=User.getInstance().stringToDate(s);
+            d=User.getInstance().removeOneDay(d);
+
+        }
+
+
+        return list;
+    }
+
+    public static ArrayList<String> getTabDayMood() {
+        return tabDayMood;
+    }
+
+    public static ArrayList<String> getTabComment() {
+        return tabComment;
+    }
 }

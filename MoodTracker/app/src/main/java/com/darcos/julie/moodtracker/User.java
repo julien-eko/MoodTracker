@@ -1,11 +1,16 @@
 package com.darcos.julie.moodtracker;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class User {
 
@@ -23,23 +28,10 @@ public class User {
     }
     private User(){
 
-        moodComment = new ArrayList();
-        mood = new ArrayList();
-
 
     }
-    public void update(){
-        ArrayList<Date> lastList=listDate(lastDay,Calendar.getInstance().getTime());
 
-        for(int i = 0;i < lastList.size(); i++) {
-            if(lastList.get(i).after(dateMinuit(lastList.get(i))))
-                this.moodComment.add(this.dayComment);
-                this.mood.add(this.dayMood);
-                this.dayComment=null;
-                this.dayMood=null;
 
-        }
-    }
 
 //return everyday between strat date and end date
     public static ArrayList<Date> listDate(Date start, Date end){
@@ -66,24 +58,31 @@ public class User {
         return new Date(y,m,d+1);
     }
 
-    public String dateToString() {
-        Date d = new Date();
+    public String dateToString(Date d) {
         SimpleDateFormat f = new SimpleDateFormat("yyyyMMdd");
         String s = f.format(d);
         return s;
     }
 
-    public Date StringToDate(String date) throws ParseException {
+    public Date stringToDate(String date) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-        Date d = sdf.parse(date);
+        Date d = null;
+        try {
+            d = sdf.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return d;
     }
 
-    public Date getDate1() {
-        Date d = new Date(2018,12,21);
+    public static Date removeOneDay(Date d){
+        Calendar dateStart=Calendar.getInstance();
+        dateStart.setTime(d);
+        dateStart.add(Calendar.DAY_OF_YEAR,-1);
 
-        return d;
+        return dateStart.getTime();
     }
+
 
     public String getDayComment() {
         return dayComment;
