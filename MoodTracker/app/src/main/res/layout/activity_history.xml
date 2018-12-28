@@ -10,15 +10,15 @@
 
     <RelativeLayout
         android:id="@+id/layout1"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/size_width"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/Comment1"
-            android:layout_width="@dimen/size_button_width"
-            android:layout_height="@dimen/size_button_height"
+            android:layout_width="@dimen/size_button_history_width"
+            android:layout_height="@dimen/size_button_history_height"
             android:layout_alignParentRight="true"
             android:background="@drawable/ic_comment_black_48px"
             android:layout_margin="10dp"/>
@@ -32,14 +32,14 @@
 
     <RelativeLayout
         android:id="@+id/layout2"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/size_width"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal">
         <Button
             android:id="@+id/Comment2"
-            android:layout_width="@dimen/size_button_width"
-            android:layout_height="@dimen/size_button_height"
+            android:layout_width="@dimen/size_button_history_width"
+            android:layout_height="@dimen/size_button_history_height"
             android:layout_alignParentRight="true"
             android:background="@drawable/ic_comment_black_48px"
             android:layout_margin="10dp"/>
@@ -52,14 +52,14 @@
 
     <RelativeLayout
         android:id="@+id/layout3"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/size_width"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal">
         <Button
             android:id="@+id/Comment3"
-            android:layout_width="@dimen/size_button_width"
-            android:layout_height="@dimen/size_button_height"
+            android:layout_width="@dimen/size_button_history_width"
+            android:layout_height="@dimen/size_button_history_height"
             android:layout_alignParentRight="true"
             android:background="@drawable/ic_comment_black_48px"
             android:layout_margin="10dp"/>
@@ -73,14 +73,14 @@
 
     <RelativeLayout
         android:id="@+id/layout4"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/size_width"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal">
         <Button
             android:id="@+id/Comment4"
-            android:layout_width="@dimen/size_button_width"
-            android:layout_height="@dimen/size_button_height"
+            android:layout_width="@dimen/size_button_history_width"
+            android:layout_height="@dimen/size_button_history_height"
             android:layout_alignParentRight="true"
             android:background="@drawable/ic_comment_black_48px"
             android:layout_margin="10dp"/>
@@ -93,14 +93,14 @@
 
     <RelativeLayout
         android:id="@+id/layout5"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/size_width"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal">
         <Button
             android:id="@+id/Comment5"
-            android:layout_width="@dimen/size_button_width"
-            android:layout_height="@dimen/size_button_height"
+            android:layout_width="@dimen/size_button_history_width"
+            android:layout_height="@dimen/size_button_history_height"
             android:layout_alignParentRight="true"
             android:background="@drawable/ic_comment_black_48px"
             android:layout_margin="10dp"/>
@@ -113,14 +113,14 @@
 
     <RelativeLayout
         android:id="@+id/layout6"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/size_width"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal">
         <Button
             android:id="@+id/Comment6"
-            android:layout_width="@dimen/size_button_width"
-            android:layout_height="@dimen/size_button_height"
+            android:layout_width="@dimen/size_button_history_width"
+            android:layout_height="@dimen/size_button_history_height"
             android:layout_alignParentRight="true"
             android:background="@drawable/ic_comment_black_48px"
             android:layout_margin="10dp"/>
@@ -133,14 +133,14 @@
 
     <RelativeLayout
         android:id="@+id/layout7"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/size_width"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal">
         <Button
             android:id="@+id/Comment7"
-            android:layout_width="@dimen/size_button_width"
-            android:layout_height="@dimen/size_button_height"
+            android:layout_width="@dimen/size_button_history_width"
+            android:layout_height="@dimen/size_button_history_height"
             android:layout_alignParentRight="true"
             android:background="@drawable/ic_comment_black_48px"
             android:layout_margin="10dp"/>
