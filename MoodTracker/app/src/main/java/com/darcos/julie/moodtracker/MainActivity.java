@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -21,12 +22,9 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements PageFragment.OnButtonClickedListener {
 
-    private Button mHistory;
-    private Button mComment;
-    private  String t;
+
     private static ArrayList<String> tabDayMood ;
     private static ArrayList<String> tabComment ;
-
 
 
     @Override
@@ -187,4 +185,6 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
     public static ArrayList<String> getTabComment() {
         return tabComment;
     }
+
+
 }

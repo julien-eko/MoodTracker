@@ -2,6 +2,7 @@ package com.darcos.julie.moodtracker;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -61,10 +62,13 @@ public class History extends AppCompatActivity {
         //layoutParams.width = (layoutParams.width)/2 ;
         //view.setLayoutParams(layoutParams);
 
+       
+
+
         this.layoutConstructor(listLayout,listButton,listView);
 
 
-      // Toast.makeText(History.this, Integer.toString(test2), Toast.LENGTH_SHORT).show();
+       //Toast.makeText(History.this, Integer.toString(metrics.widthPixels), Toast.LENGTH_SHORT).show();
 
     }
 
@@ -72,6 +76,8 @@ public class History extends AppCompatActivity {
 
     public void colorOfLayout(RelativeLayout r1,String mood,View view) {
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
         if (mood == null) {
 
         } else {
@@ -81,23 +87,23 @@ public class History extends AppCompatActivity {
                     break;
                 case "happy":
                     r1.setBackgroundColor(getResources().getColor(R.color.light_sage));
-                    layoutParams.width = (layoutParams.width)/2 ;
+                    layoutParams.width = ((metrics.widthPixels)*8)/10 ;
                     view.setLayoutParams(layoutParams);
                     break;
                 case "normal":
                     r1.setBackgroundColor(getResources().getColor(R.color.cornflower_blue_65));
-                    layoutParams.width = (layoutParams.width)/3 ;
+                    layoutParams.width = ((metrics.widthPixels)*6)/10 ;
                     view.setLayoutParams(layoutParams);
                     break;
                 case "disappointed":
                     r1.setBackgroundColor(getResources().getColor(R.color.warm_grey));
-                    layoutParams.width = (layoutParams.width)/4 ;
+                    layoutParams.width = ((metrics.widthPixels)*5)/10 ;
                     view.setLayoutParams(layoutParams);
                     break;
                 case "sad":
                     r1.setBackgroundColor(getResources().getColor(R.color.faded_red));
 
-                    layoutParams.width = (layoutParams.width)/5 ;
+                    layoutParams.width = ((metrics.widthPixels)*4)/10 ;
                     view.setLayoutParams(layoutParams);
                     break;
                 case "":
