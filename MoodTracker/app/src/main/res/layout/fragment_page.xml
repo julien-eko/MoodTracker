@@ -35,6 +35,14 @@
         android:background="@drawable/ic_history_black"
         android:layout_margin="10dp"/>
 
+    <Button
+        android:id="@+id/pie_chart"
+        android:layout_width="@dimen/size_button_width"
+        android:layout_height="@dimen/size_button_height"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"/>
+
 
 
 </RelativeLayout>

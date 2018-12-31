@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
 
     private static ArrayList<String> tabDayMood ;
     private static ArrayList<String> tabComment ;
+    private static ArrayList<String> hundredLastMood;
 
 
     @Override
@@ -58,14 +59,21 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
     public void onButtonClicked(View view) {
         //Log.e(getClass().getSimpleName(),"Button clicked !");
         int responseIndex = (int) view.getTag();
+        if (responseIndex == 2) {
+            hundredLastMood=lastMood(100);
+            Intent pieChart = new Intent(MainActivity.this, graph.class);
+            startActivity(pieChart);
+        }
         if (responseIndex == 1) {
-            tabDayMood =sevenLastMood();
+            tabDayMood =lastMood(7);
             tabComment=sevenLastComment();
-            startActivity(new Intent(this, History.class));
+            Intent history = new Intent(MainActivity.this, History.class);
+            startActivity(history);
         }
         if (responseIndex == 0){
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Comementaire");
+
 
 // Set up the input
             final EditText input = new EditText(this);
@@ -94,7 +102,12 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
             builder.show();
 
         }
+
     }
+
+
+
+
     private ViewPager.OnPageChangeListener listener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -140,13 +153,13 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
         }
     };
 
-    public ArrayList<String> sevenLastMood()  {
+    public ArrayList<String> lastMood(int nbMood)  {
         String mood ;
         ArrayList<String> list =new ArrayList<String>();
 
         Date d=new Date() ;
         String s ;
-        while(list.size()<8 ){
+        while(list.size()<(nbMood+1) ){
             s =User.getInstance().dateToString(d);
             mood=getPreferences(MODE_PRIVATE).getString("Mood"+s,null);
             list.add(mood);
@@ -186,5 +199,8 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
         return tabComment;
     }
 
+    public static ArrayList<String> getHundredLastMood() {
+        return hundredLastMood;
+    }
 
 }

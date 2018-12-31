@@ -30,6 +30,7 @@ public  class PageFragment extends Fragment implements View.OnClickListener {
     private ViewPager.OnPageChangeListener mPageCHange;
     private Button mHistory;
     private Button mAddComment;
+    private Button mPieChart;
     private int numPage;
 
 
@@ -65,10 +66,14 @@ public  class PageFragment extends Fragment implements View.OnClickListener {
         View result = inflater.inflate(R.layout.fragment_page, container, false);
         mAddComment= (Button) result.findViewById(R.id.addComment);
         mHistory = (Button) result.findViewById(R.id.history);
+        mPieChart = (Button) result.findViewById(R.id.pie_chart);
+
         mAddComment.setOnClickListener(this);
         mHistory.setOnClickListener(this);
+        mPieChart.setOnClickListener(this);
         mAddComment.setTag(0);
         mHistory.setTag(1);
+        mPieChart.setTag(2);
         //result.findViewById(R.id.history).setOnClickListener(this);
 
 
