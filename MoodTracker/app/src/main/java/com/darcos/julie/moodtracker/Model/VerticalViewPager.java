@@ -1,4 +1,4 @@
-package com.darcos.julie.moodtracker;
+package com.darcos.julie.moodtracker.Model;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

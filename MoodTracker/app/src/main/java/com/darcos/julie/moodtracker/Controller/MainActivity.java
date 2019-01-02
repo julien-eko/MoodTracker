@@ -1,21 +1,20 @@
-package com.darcos.julie.moodtracker;
+package com.darcos.julie.moodtracker.Controller;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.darcos.julie.moodtracker.Model.PageAdapter;
+import com.darcos.julie.moodtracker.Model.User;
+import com.darcos.julie.moodtracker.Model.VerticalViewPager;
+import com.darcos.julie.moodtracker.R;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,43 +24,34 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
 
     private static ArrayList<String> tabDayMood ;
     private static ArrayList<String> tabComment ;
-    private static ArrayList<String> hundredLastMood;
+    private static ArrayList<String> lastMoods;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
         //3 - Configure ViewPager
-
         this.configureViewPager();
-
-        //Toast.makeText(this, "test!",
-          //      Toast.LENGTH_LONG).show();
-
     }
 
 
 
     private void configureViewPager() {
         // 1 - Get ViewPager from layout
-
         VerticalViewPager pager = (VerticalViewPager) findViewById(R.id.activity_main_viewpager);
         pager.addOnPageChangeListener(listener);
         // 2 - Set Adapter PageAdapter and glue it together
         pager.setAdapter(new PageAdapter(getSupportFragmentManager(), getResources().getIntArray(R.array.colorPagesViewPager)) {
         });
+
         pager.setCurrentItem(1);
     }
     @Override
     public void onButtonClicked(View view) {
-        //Log.e(getClass().getSimpleName(),"Button clicked !");
         int responseIndex = (int) view.getTag();
         if (responseIndex == 2) {
-            hundredLastMood=lastMood(100);
+            lastMoods=lastMood(365);
             Intent pieChart = new Intent(MainActivity.this, graph.class);
             startActivity(pieChart);
         }
@@ -71,42 +61,11 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
             Intent history = new Intent(MainActivity.this, History.class);
             startActivity(history);
         }
-        if (responseIndex == 0){
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Comementaire");
+        if (responseIndex == 0)
+            this.createComment();
 
-
-// Set up the input
-            final EditText input = new EditText(this);
-// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-            input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
-            builder.setView(input);
-
-// Set up the buttons
-            builder.setPositiveButton("VALIDER", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("Comment"+User.getInstance().dateToString(new Date()), input.getText().toString());
-                    editor.apply();
-                    //User.getInstance().setDayComment(input.getText().toString());
-                }
-            });
-            builder.setNegativeButton("ANNULER", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
-
-            builder.show();
-
-        }
 
     }
-
-
 
 
     private ViewPager.OnPageChangeListener listener = new ViewPager.OnPageChangeListener() {
@@ -153,6 +112,38 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
 
         }
     };
+
+    public  void createComment(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Comementaire");
+
+
+// Set up the input
+        final EditText input = new EditText(this);
+// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+        builder.setView(input);
+
+// Set up the buttons
+        builder.setPositiveButton("VALIDER", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("Comment"+User.getInstance().dateToString(new Date()), input.getText().toString());
+                editor.apply();
+                //User.getInstance().setDayComment(input.getText().toString());
+            }
+        });
+        builder.setNegativeButton("ANNULER", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
 
     public ArrayList<String> lastMood(int nbMood)  {
         String mood ;
@@ -201,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
     }
 
     public static ArrayList<String> getHundredLastMood() {
-        return hundredLastMood;
+        return lastMoods;
     }
 
 }

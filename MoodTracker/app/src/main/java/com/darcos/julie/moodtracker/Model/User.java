@@ -1,16 +1,9 @@
-package com.darcos.julie.moodtracker;
-
-import android.content.Context;
-import android.content.SharedPreferences;
+package com.darcos.julie.moodtracker.Model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class User {
 
@@ -27,9 +20,6 @@ public class User {
 
 
     }
-
-
-
 
     public String dateToString(Date d) {
         SimpleDateFormat f = new SimpleDateFormat("yyyyMMdd");

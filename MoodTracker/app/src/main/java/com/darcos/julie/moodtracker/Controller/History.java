@@ -1,4 +1,4 @@
-package com.darcos.julie.moodtracker;
+package com.darcos.julie.moodtracker.Controller;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,11 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.darcos.julie.moodtracker.R;
+
 import java.util.ArrayList;
-import java.util.Date;
 
 public class History extends AppCompatActivity {
 
@@ -56,19 +56,7 @@ public class History extends AppCompatActivity {
         listLayout.add(mLayout2);listButton.add(mButton2);listView.add(view2);
         listLayout.add(mLayout1);listButton.add(mButton1);listView.add(view1);
 
-        //mButton1.setVisibility(View.INVISIBLE);
-        //View view = findViewById(R.id.layout1);
-        //ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        //layoutParams.width = (layoutParams.width)/2 ;
-        //view.setLayoutParams(layoutParams);
-
-       
-
-
         this.layoutConstructor(listLayout,listButton,listView);
-
-
-       //Toast.makeText(History.this, Integer.toString(metrics.widthPixels), Toast.LENGTH_SHORT).show();
 
     }
 

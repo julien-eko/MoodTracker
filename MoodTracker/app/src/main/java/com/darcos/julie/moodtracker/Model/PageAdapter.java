@@ -1,8 +1,10 @@
-package com.darcos.julie.moodtracker;
+package com.darcos.julie.moodtracker.Model;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.darcos.julie.moodtracker.Controller.PageFragment;
 
 public class PageAdapter extends FragmentPagerAdapter {
 
