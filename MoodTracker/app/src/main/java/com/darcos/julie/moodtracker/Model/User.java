@@ -1,5 +1,7 @@
 package com.darcos.julie.moodtracker.Model;
 
+import android.annotation.SuppressLint;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -7,7 +9,7 @@ import java.util.Date;
 
 public class User {
 
-
+    //singleton because they are one user
     private static User instance = new User();
     private String dayMood="";
 
@@ -20,15 +22,14 @@ public class User {
 
 
     }
-
+    //convert date in string
     public String dateToString(Date d) {
-        SimpleDateFormat f = new SimpleDateFormat("yyyyMMdd");
-        String s = f.format(d);
-        return s;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat f = new SimpleDateFormat("yyyyMMdd");
+        return f.format(d);
     }
-
+    //convert string in date
     public Date stringToDate(String date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         Date d = null;
         try {
             d = sdf.parse(date);
@@ -38,6 +39,7 @@ public class User {
         return d;
     }
 
+    //removed one day at the date and set at 00:00
     public static Date removeOneDay(Date d){
         Calendar dateStart=Calendar.getInstance();
         dateStart.setTime(d);

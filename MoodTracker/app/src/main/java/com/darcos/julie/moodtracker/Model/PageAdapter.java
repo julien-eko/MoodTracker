@@ -12,7 +12,7 @@ public class PageAdapter extends FragmentPagerAdapter {
     private int[] colors;
 
     // 2 - Default Constructor
-    public PageAdapter(FragmentManager mgr, int[] colors) {
+    protected PageAdapter(FragmentManager mgr, int[] colors) {
         super(mgr);
         this.colors = colors;
 

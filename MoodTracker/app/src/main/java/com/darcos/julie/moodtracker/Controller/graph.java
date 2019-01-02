@@ -27,7 +27,7 @@ public class graph extends AppCompatActivity {
 
 
     }
-
+    //create a pie chart
     public void pieChartConfigure(PieChart pieChart){
 
         pieChart.setUsePercentValues(true);
@@ -54,7 +54,7 @@ public class graph extends AppCompatActivity {
 
         pieChart.setData(pieData);
 
-        ArrayList<Integer> col=new ArrayList<Integer>();
+        ArrayList<Integer> col= new ArrayList<>();
         col.add(getResources().getColor(R.color.banana_yellow));
         col.add(getResources().getColor(R.color.light_sage));
         col.add(getResources().getColor(R.color.cornflower_blue_65));
@@ -64,8 +64,9 @@ public class graph extends AppCompatActivity {
         pieDataSet.setColors(col);
     }
 
+    //counter different mood and add in list (0 mood superhappy,1 mood happy,2mood normal,3mood disapointed,4mood sad)
     public ArrayList<Float> counterMood(){
-        ArrayList<Float> list = new ArrayList<Float>();
+        ArrayList<Float> list = new ArrayList<>();
         Float superHappy = 0f;
         Float happy =0f;
         Float normal=0f;

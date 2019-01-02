@@ -35,39 +35,40 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
         this.configureViewPager();
     }
 
-
-
     private void configureViewPager() {
         // 1 - Get ViewPager from layout
-        VerticalViewPager pager = (VerticalViewPager) findViewById(R.id.activity_main_viewpager);
+        VerticalViewPager pager = findViewById(R.id.activity_main_viewpager);
         pager.addOnPageChangeListener(listener);
         // 2 - Set Adapter PageAdapter and glue it together
         pager.setAdapter(new PageAdapter(getSupportFragmentManager(), getResources().getIntArray(R.array.colorPagesViewPager)) {
         });
-
+        //home page is page of happy mood
         pager.setCurrentItem(1);
     }
+//button management
     @Override
     public void onButtonClicked(View view) {
         int responseIndex = (int) view.getTag();
+        //button stats,recovers the last mood 365
         if (responseIndex == 2) {
             lastMoods=lastMood(365);
             Intent pieChart = new Intent(MainActivity.this, graph.class);
             startActivity(pieChart);
         }
+        //button history, recovers the mood of the week
         if (responseIndex == 1) {
             tabDayMood =lastMood(7);
             tabComment=sevenLastComment();
             Intent history = new Intent(MainActivity.this, History.class);
             startActivity(history);
         }
+        //button add comment
         if (responseIndex == 0)
             this.createComment();
 
-
     }
 
-
+//changes the mood each time the page changes and saved in the shared preference
     private ViewPager.OnPageChangeListener listener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -100,11 +101,6 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
                     editor.putString("Mood"+User.getInstance().dateToString(new Date()), User.getInstance().getDayMood());
                     editor.apply();
 
-                    //String dayMood = getPreferences(MODE_PRIVATE).getString("Comment20181227", null);
-                    //Toast.makeText(MainActivity.this, dayMood, Toast.LENGTH_SHORT).show();
-            //tabDayMood =sevenLastMood1();
-            //Toast.makeText(MainActivity.this, test.get(0), Toast.LENGTH_SHORT).show();
-
         }
 
         @Override
@@ -116,14 +112,11 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
     public  void createComment(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Comementaire");
-
-
 // Set up the input
         final EditText input = new EditText(this);
 // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
         input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         builder.setView(input);
-
 // Set up the buttons
         builder.setPositiveButton("VALIDER", new DialogInterface.OnClickListener() {
             @Override
@@ -132,7 +125,6 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("Comment"+User.getInstance().dateToString(new Date()), input.getText().toString());
                 editor.apply();
-                //User.getInstance().setDayComment(input.getText().toString());
             }
         });
         builder.setNegativeButton("ANNULER", new DialogInterface.OnClickListener() {
@@ -145,9 +137,10 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
         builder.show();
     }
 
+    //recovers last mood in a arrayList
     public ArrayList<String> lastMood(int nbMood)  {
         String mood ;
-        ArrayList<String> list =new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
 
         Date d=new Date() ;
         String s ;
@@ -156,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
             mood=getPreferences(MODE_PRIVATE).getString("Mood"+s,null);
             list.add(mood);
             d=User.getInstance().stringToDate(s);
-            d=User.getInstance().removeOneDay(d);
+            d= User.removeOneDay(d);
 
         }
 
@@ -164,9 +157,10 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
         return list;
     }
 
+    //recovers seven last comment in arrayList
     public ArrayList<String> sevenLastComment()  {
         String comment ;
-        ArrayList<String> list =new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
 
         Date d=new Date() ;
         String s ;
@@ -175,14 +169,13 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
             comment=getPreferences(MODE_PRIVATE).getString("Comment"+s,null);
             list.add(comment);
             d=User.getInstance().stringToDate(s);
-            d=User.getInstance().removeOneDay(d);
+            d= User.removeOneDay(d);
 
         }
-
-
         return list;
     }
 
+    //getteurs
     public static ArrayList<String> getTabDayMood() {
         return tabDayMood;
     }

@@ -3,8 +3,8 @@ package com.darcos.julie.moodtracker.Controller;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,15 +22,11 @@ public class PageFragment extends Fragment implements View.OnClickListener {
     private static final String KEY_COLOR = "color";
     //2 - Declare callback
     private OnButtonClickedListener mCallback;
-    private ViewPager.OnPageChangeListener mPageCHange;
-    private Button mHistory;
-    private Button mAddComment;
-    private Button mPieChart;
 
 
     // 1 - Declare our interface that will be implemented by any container activity
     public interface OnButtonClickedListener {
-        public void onButtonClicked(View view);
+        void onButtonClicked(View view);
     }
 
     public PageFragment() {
@@ -54,26 +50,27 @@ public class PageFragment extends Fragment implements View.OnClickListener {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // 3 - Get layout of PageFragment
         View result = inflater.inflate(R.layout.fragment_page, container, false);
-        mAddComment = (Button) result.findViewById(R.id.addComment);
-        mHistory = (Button) result.findViewById(R.id.history);
-        mPieChart = (Button) result.findViewById(R.id.pie_chart);
+        Button addComment =result.findViewById(R.id.addComment);
+        Button history =result.findViewById(R.id.history);
+        Button pieChart =result.findViewById(R.id.pie_chart);
 
-        mAddComment.setOnClickListener(this);
-        mHistory.setOnClickListener(this);
-        mPieChart.setOnClickListener(this);
-        mAddComment.setTag(0);
-        mHistory.setTag(1);
-        mPieChart.setTag(2);
+        addComment.setOnClickListener(this);
+        history.setOnClickListener(this);
+        pieChart.setOnClickListener(this);
+        addComment.setTag(0);
+        history.setTag(1);
+        pieChart.setTag(2);
 
         // 4 - Get widgets from layout and serialise it
-        RelativeLayout rootView = (RelativeLayout) result.findViewById(R.id.fragment_page_rootview);
-        ImageView img = (ImageView) result.findViewById(R.id.imageView);
+        RelativeLayout rootView =result.findViewById(R.id.fragment_page_rootview);
+        ImageView img =result.findViewById(R.id.imageView);
 
         // 5 - Get data from Bundle (created in method newInstance)
+        assert getArguments() != null;
         int position = getArguments().getInt(KEY_POSITION, -1);
         int color = getArguments().getInt(KEY_COLOR, -1);
 
@@ -113,6 +110,7 @@ public class PageFragment extends Fragment implements View.OnClickListener {
 
     }
 
+    //add smiley in terms of pagefragment selectioned
     public void drawImage(int position, ImageView img) {
         switch (position) {
             case 0:

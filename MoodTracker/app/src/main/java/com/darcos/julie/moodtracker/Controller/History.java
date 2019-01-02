@@ -1,5 +1,7 @@
 package com.darcos.julie.moodtracker.Controller;
 
+
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -23,24 +25,26 @@ public class History extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        ArrayList<RelativeLayout> listLayout =new ArrayList<RelativeLayout>();
-        ArrayList<Button> listButton =new ArrayList<Button>();
-        ArrayList<View> listView =new ArrayList<View>();
+        // create 3 list and connect button layout and view
 
-        RelativeLayout mLayout1 =(RelativeLayout) findViewById(R.id.layout1);
-        RelativeLayout mLayout2 =(RelativeLayout) findViewById(R.id.layout2);
-        RelativeLayout mLayout3 =(RelativeLayout) findViewById(R.id.layout3);
-        RelativeLayout mLayout4 =(RelativeLayout) findViewById(R.id.layout4);
-        RelativeLayout mLayout5 =(RelativeLayout) findViewById(R.id.layout5);
-        RelativeLayout mLayout6 =(RelativeLayout) findViewById(R.id.layout6);
-        RelativeLayout mLayout7 =(RelativeLayout) findViewById(R.id.layout7);
-        Button mButton1=(Button) findViewById(R.id.Comment1);
-        Button mButton2=(Button) findViewById(R.id.Comment2);
-        Button mButton3=(Button) findViewById(R.id.Comment3);
-        Button mButton4=(Button) findViewById(R.id.Comment4);
-        Button mButton5=(Button) findViewById(R.id.Comment5);
-        Button mButton6=(Button) findViewById(R.id.Comment6);
-        Button mButton7=(Button) findViewById(R.id.Comment7);
+        ArrayList<RelativeLayout> listLayout =new ArrayList<>();
+        ArrayList<Button> listButton = new ArrayList<>();
+        ArrayList<View> listView =new ArrayList<>();
+
+        RelativeLayout mLayout1 = this.findViewById(R.id.layout1);
+        RelativeLayout mLayout2 =this.findViewById(R.id.layout2);
+        RelativeLayout mLayout3 =this.findViewById(R.id.layout3);
+        RelativeLayout mLayout4 =this.findViewById(R.id.layout4);
+        RelativeLayout mLayout5 =this.findViewById(R.id.layout5);
+        RelativeLayout mLayout6 =this.findViewById(R.id.layout6);
+        RelativeLayout mLayout7 =this.findViewById(R.id.layout7);
+        Button mButton1=findViewById(R.id.Comment1);
+        Button mButton2=findViewById(R.id.Comment2);
+        Button mButton3=findViewById(R.id.Comment3);
+        Button mButton4=findViewById(R.id.Comment4);
+        Button mButton5=findViewById(R.id.Comment5);
+        Button mButton6=findViewById(R.id.Comment6);
+        Button mButton7=findViewById(R.id.Comment7);
         View view1 = findViewById(R.id.layout1);
         View view2 = findViewById(R.id.layout2);
         View view3 = findViewById(R.id.layout3);
@@ -61,13 +65,13 @@ public class History extends AppCompatActivity {
     }
 
 
-
+    // choose color of layout in term of mood and change dimmention of layout
     public void colorOfLayout(RelativeLayout r1,String mood,View view) {
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         if (mood == null) {
-
+            r1.setBackgroundColor(Color.rgb(255,255,255));
         } else {
             switch (mood) {
                 case "superHappy":
@@ -104,6 +108,7 @@ public class History extends AppCompatActivity {
         }
     }
 
+    //if they are not comment put button invisible
     public void buttonVisibility(Button b, final String comment){
         if(comment==null){
             b.setVisibility(View.INVISIBLE);
@@ -118,6 +123,8 @@ public class History extends AppCompatActivity {
 
         }
     }
+
+    //constructor of different layout
     public void layoutConstructor(ArrayList<RelativeLayout> listLayout,ArrayList<Button> listButton,ArrayList<View> listView){
 
         for(int i=1;i<=listLayout.size();i++){
