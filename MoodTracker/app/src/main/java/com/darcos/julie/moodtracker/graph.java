@@ -62,7 +62,7 @@ public class graph extends AppCompatActivity {
         pieDataSet.setColors(col);
         //ArrayList<Float> list=counterMood();
 
-        Toast.makeText(graph.this, Float.toString(list.get(0)), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(graph.this, Float.toString(list.get(0)), Toast.LENGTH_SHORT).show();
         //Toast.makeText(graph.this, hundredMood.get(2), Toast.LENGTH_SHORT).show();
 
 

@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
         // 2 - Set Adapter PageAdapter and glue it together
         pager.setAdapter(new PageAdapter(getSupportFragmentManager(), getResources().getIntArray(R.array.colorPagesViewPager)) {
         });
+        pager.setCurrentItem(1);
     }
     @Override
     public void onButtonClicked(View view) {
