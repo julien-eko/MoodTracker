@@ -1,49 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:id="@+id/fragment_page_rootview"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_page_rootview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.darcos.julie.moodtracker.Controller.PageFragment"
-    >
-
+    tools:context="com.darcos.julie.moodtracker.Controller.PageFragment">
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/fragment_page_imageView"
         android:layout_width="@dimen/size_image_width"
         android:layout_height="@dimen/size_image_height"
-        android:layout_centerInParent="true"
-        />
+        android:layout_centerInParent="true" />
 
 
     <Button
-        android:id="@+id/addComment"
+        android:id="@+id/fragment_page_addComment_btn"
         android:layout_width="@dimen/size_button_width"
         android:layout_height="@dimen/size_button_height"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/ic_comment_black_48px"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:background="@drawable/ic_comment_black_48px" />
 
     <Button
-        android:id="@+id/history"
+        android:id="@+id/fragment_page_history_btn"
         android:layout_width="@dimen/size_button_width"
         android:layout_height="@dimen/size_button_height"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:background="@drawable/ic_history_black"
-        android:layout_margin="10dp"/>
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/ic_history_black" />
 
     <Button
-        android:id="@+id/pie_chart"
+        android:id="@+id/fragment_page_pie_chart_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:text="Stats"
-        android:layout_margin="10dp"/>
-
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:text="Stats" />
 
 
 </RelativeLayout>

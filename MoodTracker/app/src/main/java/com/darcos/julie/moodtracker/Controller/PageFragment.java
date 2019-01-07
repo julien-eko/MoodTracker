@@ -54,20 +54,20 @@ public class PageFragment extends Fragment implements View.OnClickListener {
 
         // 3 - Get layout of PageFragment
         View result = inflater.inflate(R.layout.fragment_page, container, false);
-        Button addComment =result.findViewById(R.id.addComment);
-        Button history =result.findViewById(R.id.history);
-        Button pieChart =result.findViewById(R.id.pie_chart);
+        Button mCommentBtn = result.findViewById(R.id.fragment_page_addComment_btn);
+        Button mHistoryBtn = result.findViewById(R.id.fragment_page_history_btn);
+        Button mPieChartBtn = result.findViewById(R.id.fragment_page_pie_chart_btn);
 
-        addComment.setOnClickListener(this);
-        history.setOnClickListener(this);
-        pieChart.setOnClickListener(this);
-        addComment.setTag(0);
-        history.setTag(1);
-        pieChart.setTag(2);
+        mCommentBtn.setOnClickListener(this);
+        mHistoryBtn.setOnClickListener(this);
+        mPieChartBtn.setOnClickListener(this);
+        mCommentBtn.setTag(0);
+        mHistoryBtn.setTag(1);
+        mPieChartBtn.setTag(2);
 
         // 4 - Get widgets from layout and serialise it
-        RelativeLayout rootView =result.findViewById(R.id.fragment_page_rootview);
-        ImageView img =result.findViewById(R.id.imageView);
+        RelativeLayout rootView = result.findViewById(R.id.fragment_page_rootview);
+        ImageView img = result.findViewById(R.id.fragment_page_imageView);
 
         // 5 - Get data from Bundle (created in method newInstance)
         assert getArguments() != null;
@@ -77,7 +77,7 @@ public class PageFragment extends Fragment implements View.OnClickListener {
         // 6 - Update widgets with it
         rootView.setBackgroundColor(color);
 
-        this.drawImage(position,img);
+        this.drawImage(position, img);
 
         return result;
     }

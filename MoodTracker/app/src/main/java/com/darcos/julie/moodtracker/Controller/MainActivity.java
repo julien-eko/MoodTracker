@@ -22,8 +22,8 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity implements PageFragment.OnButtonClickedListener {
 
 
-    private static ArrayList<String> tabDayMood ;
-    private static ArrayList<String> tabComment ;
+    private static ArrayList<String> tabDayMood;
+    private static ArrayList<String> tabComment;
     private static ArrayList<String> lastMoods;
 
 
@@ -45,20 +45,21 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
         //home page is page of happy mood
         pager.setCurrentItem(1);
     }
-//button management
+
+    //button management
     @Override
     public void onButtonClicked(View view) {
         int responseIndex = (int) view.getTag();
         //button stats,recovers the last mood 365
         if (responseIndex == 2) {
-            lastMoods=lastMood(365);
-            Intent pieChart = new Intent(MainActivity.this, graph.class);
+            lastMoods = lastMood(365);
+            Intent pieChart = new Intent(MainActivity.this, Graph.class);
             startActivity(pieChart);
         }
         //button history, recovers the mood of the week
         if (responseIndex == 1) {
-            tabDayMood =lastMood(7);
-            tabComment=sevenLastComment();
+            tabDayMood = lastMood(7);
+            tabComment = sevenLastComment();
             Intent history = new Intent(MainActivity.this, History.class);
             startActivity(history);
         }
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
 
     }
 
-//changes the mood each time the page changes and saved in the shared preference
+    //changes the mood each time the page changes and saved in the shared preference
     private ViewPager.OnPageChangeListener listener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -96,10 +97,10 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
                 default:
 
             }
-                    SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("Mood"+User.getInstance().dateToString(new Date()), User.getInstance().getDayMood());
-                    editor.apply();
+            SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("Mood" + User.getInstance().dateToString(new Date()), User.getInstance().getDayMood());
+            editor.apply();
 
         }
 
@@ -109,9 +110,9 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
         }
     };
 
-    public  void createComment(){
+    public void createComment() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Comementaire");
+        builder.setTitle("Commentaire");
 // Set up the input
         final EditText input = new EditText(this);
 // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
@@ -123,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
             public void onClick(DialogInterface dialog, int which) {
                 SharedPreferences preferences = getPreferences(MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("Comment"+User.getInstance().dateToString(new Date()), input.getText().toString());
+                editor.putString("Comment" + User.getInstance().dateToString(new Date()), input.getText().toString());
                 editor.apply();
             }
         });
@@ -138,18 +139,18 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
     }
 
     //recovers last mood in a arrayList
-    public ArrayList<String> lastMood(int nbMood)  {
-        String mood ;
+    public ArrayList<String> lastMood(int nbMood) {
+        String mood;
         ArrayList<String> list = new ArrayList<>();
 
-        Date d=new Date() ;
-        String s ;
-        while(list.size()<(nbMood+1) ){
-            s =User.getInstance().dateToString(d);
-            mood=getPreferences(MODE_PRIVATE).getString("Mood"+s,null);
+        Date d = new Date();
+        String s;
+        while (list.size() < (nbMood + 1)) {
+            s = User.getInstance().dateToString(d);
+            mood = getPreferences(MODE_PRIVATE).getString("Mood" + s, null);
             list.add(mood);
-            d=User.getInstance().stringToDate(s);
-            d= User.removeOneDay(d);
+            d = User.getInstance().stringToDate(s);
+            d = User.removeOneDay(d);
 
         }
 
@@ -158,18 +159,18 @@ public class MainActivity extends AppCompatActivity implements PageFragment.OnBu
     }
 
     //recovers seven last comment in arrayList
-    public ArrayList<String> sevenLastComment()  {
-        String comment ;
+    public ArrayList<String> sevenLastComment() {
+        String comment;
         ArrayList<String> list = new ArrayList<>();
 
-        Date d=new Date() ;
-        String s ;
-        while(list.size()<8 ){
-            s =User.getInstance().dateToString(d);
-            comment=getPreferences(MODE_PRIVATE).getString("Comment"+s,null);
+        Date d = new Date();
+        String s;
+        while (list.size() < 8) {
+            s = User.getInstance().dateToString(d);
+            comment = getPreferences(MODE_PRIVATE).getString("Comment" + s, null);
             list.add(comment);
-            d=User.getInstance().stringToDate(s);
-            d= User.removeOneDay(d);
+            d = User.getInstance().stringToDate(s);
+            d = User.removeOneDay(d);
 
         }
         return list;

@@ -1,154 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controller.History"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Controller.History">
 
 
     <RelativeLayout
-        android:id="@+id/layout1"
+        android:id="@+id/activity_history_7_jours_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/Comment1"
+            android:id="@+id/activity_history_7_jours_btn"
             android:layout_width="@dimen/size_button_history_width"
             android:layout_height="@dimen/size_button_history_height"
             android:layout_alignParentRight="true"
-            android:background="@drawable/ic_comment_black_48px"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_comment_black_48px" />
+
         <TextView
-            android:id="@+id/text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Il y a une semaine"/>
+            android:text="Il y a une semaine" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/layout2"
+        android:id="@+id/activity_history_6_jours_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal">
+
         <Button
-            android:id="@+id/Comment2"
+            android:id="@+id/activity_history_6_jours_btn"
             android:layout_width="@dimen/size_button_history_width"
             android:layout_height="@dimen/size_button_history_height"
             android:layout_alignParentRight="true"
-            android:background="@drawable/ic_comment_black_48px"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_comment_black_48px" />
+
         <TextView
-            android:id="@+id/text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Il y a six Jours"/>
+            android:text="Il y a six Jours" />
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/layout3"
+        android:id="@+id/activity_history_5_jours_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal">
+
         <Button
-            android:id="@+id/Comment3"
+            android:id="@+id/activity_history_5_jours_btn"
             android:layout_width="@dimen/size_button_history_width"
             android:layout_height="@dimen/size_button_history_height"
             android:layout_alignParentRight="true"
-            android:background="@drawable/ic_comment_black_48px"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_comment_black_48px" />
+
         <TextView
-            android:id="@+id/text3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Il y a cinq Jours"/>
+            android:text="Il y a cinq Jours" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/layout4"
+        android:id="@+id/activity_history_4_jours_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal">
+
         <Button
-            android:id="@+id/Comment4"
+            android:id="@+id/activity_history_4_jours_btn"
             android:layout_width="@dimen/size_button_history_width"
             android:layout_height="@dimen/size_button_history_height"
             android:layout_alignParentRight="true"
-            android:background="@drawable/ic_comment_black_48px"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_comment_black_48px" />
+
         <TextView
-            android:id="@+id/text4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Il y a quatre Jours"/>
+            android:text="Il y a quatre Jours" />
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/layout5"
+        android:id="@+id/activity_history_3_jours_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal">
+
         <Button
-            android:id="@+id/Comment5"
+            android:id="@+id/activity_history_3_jours_btn"
             android:layout_width="@dimen/size_button_history_width"
             android:layout_height="@dimen/size_button_history_height"
             android:layout_alignParentRight="true"
-            android:background="@drawable/ic_comment_black_48px"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_comment_black_48px" />
+
         <TextView
-            android:id="@+id/text5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Il y a trois Jours"/>
+            android:text="Il y a trois Jours" />
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/layout6"
+        android:id="@+id/activity_history_2_jours_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal">
+
         <Button
-            android:id="@+id/Comment6"
+            android:id="@+id/activity_history_2_jours_btn"
             android:layout_width="@dimen/size_button_history_width"
             android:layout_height="@dimen/size_button_history_height"
             android:layout_alignParentRight="true"
-            android:background="@drawable/ic_comment_black_48px"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_comment_black_48px" />
+
         <TextView
-            android:id="@+id/text6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Avant-hier"/>
+            android:text="Avant-hier" />
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/layout7"
+        android:id="@+id/activity_history_1_jours_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal">
+
         <Button
-            android:id="@+id/Comment7"
+            android:id="@+id/activity_history_1_jours_btn"
             android:layout_width="@dimen/size_button_history_width"
             android:layout_height="@dimen/size_button_history_height"
             android:layout_alignParentRight="true"
-            android:background="@drawable/ic_comment_black_48px"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_comment_black_48px" />
+
         <TextView
-            android:id="@+id/text7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hier"/>
+            android:text="Hier" />
     </RelativeLayout>
 
 </LinearLayout>

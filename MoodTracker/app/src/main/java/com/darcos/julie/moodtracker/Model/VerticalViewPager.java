@@ -9,9 +9,8 @@ import android.view.View;
 /**
  * Uses a combination of a PageTransformer and swapping X & Y coordinates
  * of touch events to create the illusion of a vertically scrolling ViewPager.
- *
+ * <p>
  * Requires API 11+
- *
  */
 public class VerticalViewPager extends ViewPager {
 
@@ -74,7 +73,7 @@ public class VerticalViewPager extends ViewPager {
     }
 
     @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev){
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
         boolean intercepted = super.onInterceptTouchEvent(swapXY(ev));
         swapXY(ev); // return touch coordinates to original reference frame for any child views
         return intercepted;

@@ -11,22 +11,24 @@ public class User {
 
     //singleton because they are one user
     private static User instance = new User();
-    private String dayMood="";
+    private String dayMood = "";
 
 
-
-    public static User getInstance(){
+    public static User getInstance() {
         return instance;
     }
-    private User(){
+
+    private User() {
 
 
     }
+
     //convert date in string
     public String dateToString(Date d) {
         @SuppressLint("SimpleDateFormat") SimpleDateFormat f = new SimpleDateFormat("yyyyMMdd");
         return f.format(d);
     }
+
     //convert string in date
     public Date stringToDate(String date) {
         @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
@@ -40,14 +42,13 @@ public class User {
     }
 
     //removed one day at the date and set at 00:00
-    public static Date removeOneDay(Date d){
-        Calendar dateStart=Calendar.getInstance();
+    public static Date removeOneDay(Date d) {
+        Calendar dateStart = Calendar.getInstance();
         dateStart.setTime(d);
-        dateStart.add(Calendar.DAY_OF_YEAR,-1);
+        dateStart.add(Calendar.DAY_OF_YEAR, -1);
 
         return dateStart.getTime();
     }
-
 
 
     public String getDayMood() {
