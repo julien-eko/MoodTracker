@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/smiley_happy"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/smiley_happy"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Controller.MainActivity"
@@ -24,7 +24,7 @@
         <activity android:name=".PieChart"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity android:name=".Controller.graph"
+        <activity android:name=".Controller.Graph"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
